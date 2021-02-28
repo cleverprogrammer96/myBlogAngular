@@ -1,3 +1,34 @@
+<!-- -------------------------------------------Modal---------------------------------------------- -->
+<!-- launch button of modal which is hidden -->
+<button type="button" id="editBlogButton" style="display:none" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal for editing blogs -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Your blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-11">
+              <label for="exampleFormControlTextarea1">Edit your blog here</label>
+                   <textarea class="form-control" [(ngModel)]="editBlogData"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeModal" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" (click)="saveEditedBlog()" class="btn btn-primary btn-sm">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------------------Modal Closed------------------------------------------------------------->
 <div class="row mt-5" id="form-inputs">
     <div class="col-md-12 mx-auto d-block">
         <div class="card mb-3">
@@ -44,6 +75,7 @@
     <ng-container *ngFor="let item of previousBlogs; let i=index;">
         <app-prev-blogs [blog]="item"></app-prev-blogs>
         <button class="btn btn-danger btn-sm"(click)="deleteBlog(i)">Delete</button>
+        <button class="btn btn-primary btn-sm"(click)="editBlog(i)">Edit</button>
         <hr>
     </ng-container>
 </div>
