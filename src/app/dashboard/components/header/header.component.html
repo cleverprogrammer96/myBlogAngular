@@ -1,0 +1,39 @@
+<!--Navbar-->
+<nav class="navbar header navbar-expand-lg special-color-dark">
+    <link
+    rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">
+        <img src="../../../../assets/blog.png" class="logo"/>
+    </a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div
+        class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+
+            <li class="nav-item" style="display: flex; align-items: center;">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <a class="nav-link" href="#">{{loggedInUser}}</a>
+            </li>
+
+            <li (click)="logOut()" class="nav-item" style="display: flex; align-items: center;">
+                <a class="nav-link" href="#">Sign Out</a>
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </li>
+
+
+        </ul>
+
+    </div>
+
+
+</nav>

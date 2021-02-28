@@ -1,0 +1,52 @@
+<div class="row mt-5" id="form-inputs">
+    <div class="col-md-12 mx-auto d-block">
+        <div class="card mb-3">
+            <div class="row" style="justify-content: center;">
+                <div class="col-md-12">
+                    <div class="card-body col-lg-12">
+                        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <img class="form-img" src="../../../../assets/description.png" />
+                                    </div>
+                                    <div class="col-md-11">
+                                        <label for="exampleFormControlTextarea1">Write your blog here</label>
+                                             <textarea class="form-control" ngModel name="textBlog" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button [disabled]="!authForm.valid" class="btn btn-secondary btn-sm">Add My Blog</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" *ngIf="previousBlogs?.length==0 && !isLoading">
+    <div class="card-body" style="display: flex; justify-content: center; align-items: center;">
+        <img src="../../../../assets/empty.png" />
+        <h2>No Blogs found...!</h2>
+    </div>
+</div>
+<div *ngIf="isLoading" class="row" style="justify-content: center;">
+    <mat-spinner></mat-spinner>
+</div>
+<button (click)="sortMe()" *ngIf="!!previousBlogs && !isLoading" class="btn btn-success btn-sm">Toggle Blogs to Sort by Date</button>
+<mat-divider></mat-divider>
+<hr class="rounded">
+<div *ngIf="!!previousBlogs && !isLoading">
+    <ng-container *ngFor="let item of previousBlogs; let i=index;">
+        <app-prev-blogs [blog]="item"></app-prev-blogs>
+        <button class="btn btn-danger btn-sm"(click)="deleteBlog(i)">Delete</button>
+        <hr>
+    </ng-container>
+</div>
+
+<br>
+<br>
